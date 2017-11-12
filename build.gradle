@@ -1,4 +1,8 @@
-apply plugin: 'java-library'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+version = '1.0'
+group = 'fork3'
 
 repositories {
     jcenter()
