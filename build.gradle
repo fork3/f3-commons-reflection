@@ -1,14 +1,22 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'maven-publish'
 
 version = '1.0'
 group = 'fork3'
 
-repositories {
-    jcenter()
+repositories { jcenter() }
+
+dependencies { testCompile 'junit:junit:4.12' }
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) { from components.java  }
+	}
 }
 
-dependencies {
-    testCompile 'junit:junit:4.12'
+publishing {
+	repositories {
+		maven { url 'build/repository' }
+	}
 }
-
