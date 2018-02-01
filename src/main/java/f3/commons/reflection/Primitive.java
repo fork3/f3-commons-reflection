@@ -15,52 +15,60 @@
  */
 package f3.commons.reflection;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * @author n3k0nation
  *
  */
 public class Primitive {
-
-	private final static Map<Class<?>, Class<?>> primitiveToWrap = new HashMap<>();
-	static {
-		primitiveToWrap.put(byte.class, Byte.class);
-		primitiveToWrap.put(short.class, Short.class);
-		primitiveToWrap.put(char.class, Character.class);
-		primitiveToWrap.put(int.class, Integer.class);
-		primitiveToWrap.put(long.class, Long.class);
-		primitiveToWrap.put(float.class, Float.class);
-		primitiveToWrap.put(double.class, Double.class);
-		primitiveToWrap.put(void.class, Void.class);
-	}
 	
+	private Primitive() {
+	}
+
+	/** Return wrap class type for primitive class type. 
+	 * If incoming class is not primitive type return it. */
 	public static Class<?> getWrap(Class<?> clazz) {
 		if(!clazz.isPrimitive()) {
 			return clazz;
+		} else if(clazz == byte.class) {
+			return Byte.class;
+		} else if(clazz == short.class) {
+			return Short.class;
+		} else if(clazz == char.class) {
+			return Character.class;
+		} else if(clazz == int.class) {
+			return Integer.class;
+		} else if(clazz == long.class) {
+			return Long.class;
+		} else if(clazz == float.class) {
+			return Float.class;
+		} else if(clazz == double.class) {
+			return Double.class;
+		} else {
+			return Void.class;
 		}
-		
-		return primitiveToWrap.get(clazz);
 	}
 	
-	private final static Map<Class<?>, Class<?>> wrapToPrimitive = new HashMap<>();
-	static {
-		wrapToPrimitive.put(Byte.class, byte.class);
-		wrapToPrimitive.put(Short.class, short.class);
-		wrapToPrimitive.put(Character.class, char.class);
-		wrapToPrimitive.put(Integer.class, int.class);
-		wrapToPrimitive.put(Long.class, long.class);
-		wrapToPrimitive.put(Float.class, float.class);
-		wrapToPrimitive.put(Double.class, double.class);
-		wrapToPrimitive.put(Void.class, void.class);
-	}
-	
+	/** Return primitive class type for wrap class type.
+	 * If incoming class is primitive type return it. */
 	public static Class<?> getPrimitive(Class<?> clazz) {
 		if(clazz.isPrimitive()) {
 			return clazz;
+		} else if(clazz == Byte.class) {
+			return byte.class;
+		} else if(clazz == Short.class) {
+			return short.class;
+		} else if(clazz == Character.class) {
+			return char.class;
+		} else if(clazz == Integer.class) {
+			return int.class;
+		} else if(clazz == Long.class) {
+			return long.class;
+		} else if(clazz == Float.class) {
+			return float.class;
+		} else if(clazz == Double.class) {
+			return double.class;
+		} else {
+			return void.class;
 		}
-		
-		return wrapToPrimitive.get(clazz);
 	}
 }
