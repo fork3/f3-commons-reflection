@@ -49,10 +49,11 @@ public class Primitive {
 	}
 	
 	/** Return primitive class type for wrap class type.
-	 * If incoming class is primitive type return null. */
+	 * If incoming class is primitive type return it.
+	 * If incoming class is not primitive wrap type return null. */
 	public static Class<?> getPrimitive(Class<?> clazz) {
 		if(clazz.isPrimitive()) {
-			return null;
+			return clazz;
 		} else if(clazz == Byte.class) {
 			return byte.class;
 		} else if(clazz == Short.class) {
@@ -67,8 +68,10 @@ public class Primitive {
 			return float.class;
 		} else if(clazz == Double.class) {
 			return double.class;
-		} else {
+		} else if(clazz == Void.class) {
 			return void.class;
+		} else {
+			return null;
 		}
 	}
 }
